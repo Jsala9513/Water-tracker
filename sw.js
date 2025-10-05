@@ -1,5 +1,5 @@
 // Bump this version whenever you update files
-const CACHE = 'water-tracker-v5';
+const CACHE = 'water-tracker-v6';
 
 // List of files to cache
 const ASSETS = [
@@ -40,4 +40,5 @@ self.addEventListener('fetch', (e) => {
       .catch(() => caches.match(e.request))
   );
 });
+
 
