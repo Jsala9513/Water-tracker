@@ -429,7 +429,7 @@
     function render() {
       ensureToday();
       const p = progress();
-      percentLabel.textContent = `${Math.round(p*100)}%";
+      percentLabel.textContent = `${Math.round(p*100)}%`;
       totalsLabel.textContent  = `${data.logs[0].ounces} / ${data.goal} oz`;
       document.getElementById('motivation').textContent = motivationText(p);
       renderHistory();
@@ -460,3 +460,4 @@
   </script>
 </body>
 </html>
+
