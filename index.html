@@ -75,10 +75,10 @@
 
       <div class="row section">
         <div>
-          <label>Manual set (today)</label>
+          <label>Add custom amount</label>
           <div class="row" style="margin-top:8px">
             <input id="manualInput" type="number" min="0" inputmode="numeric" placeholder="e.g., 64">
-            <button class="secondary" id="setBtn">Set Today</button>
+            <button class="secondary" id="setBtn">Add</button>
           </div>
         </div>
       </div>
@@ -170,10 +170,16 @@
       if (!isNaN(g) && g > 0) { data.goal = Math.min(300, Math.max(20, g)); store.save(data); render(); }
     });
     setBtn.addEventListener('click', () => {
-      ensureToday();
-      const v = parseInt(manualInput.value, 10);
-      if (!isNaN(v) && v >= 0) { data.logs[0].ounces = v; store.save(data); manualInput.value = ''; render(); }
-    });
+  ensureToday();
+  const v = parseInt(manualInput.value, 10);
+  if (!isNaN(v) && v > 0) { 
+    data.logs[0].ounces = Math.max(0, (data.logs[0].ounces || 0) + v);
+    store.save(data);
+    manualInput.value = '';
+    render();
+  }
+});
+
     resetTodayBtn.addEventListener('click', () => { ensureToday(); data.logs[0].ounces = 0; store.save(data); render(); });
     exportBtn.addEventListener('click', () => {
       const rows = [['Date','Ounces','Goal']];
@@ -460,4 +466,5 @@
   </script>
 </body>
 </html>
+
 
