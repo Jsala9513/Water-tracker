@@ -344,7 +344,7 @@
     function drawWaveAndFish(p) {
       const w = canvas.clientWidth, h = canvas.clientHeight;
       const level = h * (1 - p);
-      const amp = Math.max(6, Math.min(18, h * 0.08));
+      const amp = Math.max(3, Math.min(8, h * 0.03));
       const k = (Math.PI * 2) / w;
 
       // Clear
@@ -454,3 +454,4 @@
   </script>
 </body>
 </html>
+
